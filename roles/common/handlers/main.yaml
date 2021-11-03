@@ -2,6 +2,6 @@
   service:
     name: nginx.service
     state: restarted
-  when: ansible_facts['os_family']|lower=="redhat"
+
 
     

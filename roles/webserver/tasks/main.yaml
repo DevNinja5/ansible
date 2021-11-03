@@ -1,0 +1,40 @@
+- name: copying nginx config to remotes ubuntu
+  copy: 
+    src: /home/knoldus/Desktop/ansible-assignmentt/static.conf
+    dest: /etc/nginx/conf.d/
+    owner: root
+    group: root
+    mode: '0775'
+  notify:
+    - restart nginx service
+
+- name: copying nginx config to remotes redhat
+  copy: 
+    src: /home/knoldus/Desktop/ansible-assignmentt/static.conf
+    dest: /etc/nginx/conf.d/
+    owner: root
+    group: root
+    mode: '0775'
+  notify:
+    - restart nginx service
+
+
+- name: copying the static html page to remotes ec2 machines ubuntu
+  copy:
+    src: /home/knoldus/Downloads/pluto-2/pluto
+    dest: /var/www/html/pluto
+    owner: root
+    group: root
+    mode: '0664'
+
+- name: copying the static html page to remotes ec2 machines redhat
+  copy:
+    src: /home/knoldus/Downloads/pluto-2/pluto
+    dest: /var/www/html/pluto
+    owner: root
+    group: root
+    mode: '0664'
+
+
+
+    #loops are pending
