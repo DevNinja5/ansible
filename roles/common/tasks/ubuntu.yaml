@@ -1,0 +1,10 @@
+    - name: updating packages repo in debian
+      apt:
+        # name: "*"
+        # state: latest
+        update_cache: yes
+
+    - name: installing nginx in debian
+      apt:
+        name: nginx
+        state: present

@@ -1,0 +1,13 @@
+---
+- name: Deploying html page on two ec2 machines
+  hosts: remote
+  become: yes
+  # roles:
+  #   - common
+  tasks:
+    - name: updating repositories in ec2 machines
+      import_role: 
+        name: common
+    # - name: test
+    #   debug:
+    #     msg: "hi"

@@ -1,0 +1,10 @@
+    - name: updating package repo in redhat
+      yum: 
+        # name: "*"
+        # state: latest
+        update_cache: yes
+
+    - name: installing nginx in redhat
+      yum:
+        name: nginx
+        state: present
