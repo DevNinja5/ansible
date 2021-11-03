@@ -8,35 +8,18 @@
     - name: updating repositories in ec2 machines
       import_role: 
         name: common
-    # - name: test
-    #   debug:
-    #     msg: "hi"
 
-    - name: make a directory
+
+    - name: delete a directory
       file:
         path: /var/www/html/pluto/
-        state: directory
-        owner: root
-        group: root
-        mode: '0775'
+        state: absent
 
-# commented this task bcz it take too much time
-    # - name: copying the static html page to remotes ec2 machines
-    #   copy:
-    #     src: /home/knoldus/Downloads/pluto-2/pluto
-    #     dest: /var/www/html/pluto
-    #     owner: root
-    #     group: root
-    #     mode: '0664'
-    # - name: copying nginx config to remotes
-    #   copy: 
-    #     src: /home/knoldus/Desktop/ansible-assignmentt/static.conf
-    #     dest: /etc/nginx/conf.d/
-    #     owner: root
-    #     group: root
-    #     mode: '0775'
-    #   notify:
-    #     - restart nginx service
+    - name: configuring webservers of ec2
+      include_role:
+        name: webserver
+
+
 
     - name: deleting default config of nginx
       file:

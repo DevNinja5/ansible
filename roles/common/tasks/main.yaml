@@ -1,12 +1,12 @@
     - name: updating packages repo in debian
       import_tasks: ubuntu.yaml
       when: ansible_facts['os_family']=='Debian'
-      notify: restart nginx service
+      # notify: restart nginx service
 
     - name: updating package repo in redhat
       import_tasks: redhat.yaml
       when: ansible_facts['os_family']|lower=="redhat"
-      notify: restart nginx service
+      # notify: restart nginx service
 
     - name: invoking handlers
       meta: flush_handlers

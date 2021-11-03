@@ -1,0 +1,8 @@
+htmlpaths:
+  debian: /var/www
+  redhat: /usr/share/nginx
+
+configfiles:
+  - { distro: debian , file: nginx-ubuntu.conf}
+  - { distro: redhat , file: nginx-redhat.conf}
+  

@@ -1,40 +1,28 @@
 - name: copying nginx config to remotes ubuntu
   copy: 
-    src: /home/knoldus/Desktop/ansible-assignmentt/static.conf
+    src: /home/knoldus/Desktop/ansible-assignmentt/{{item.file}}
     dest: /etc/nginx/conf.d/
     owner: root
     group: root
     mode: '0775'
   notify:
     - restart nginx service
-
-- name: copying nginx config to remotes redhat
-  copy: 
-    src: /home/knoldus/Desktop/ansible-assignmentt/static.conf
-    dest: /etc/nginx/conf.d/
-    owner: root
-    group: root
-    mode: '0775'
-  notify:
-    - restart nginx service
+  when: 'ansible_facts["os_family"]|lower=="{{ item.distro }}"'
+  loop: "{{ configfiles }}"
 
 
-- name: copying the static html page to remotes ec2 machines ubuntu
-  copy:
-    src: /home/knoldus/Downloads/pluto-2/pluto
-    dest: /var/www/html/pluto
-    owner: root
-    group: root
-    mode: '0664'
 
-- name: copying the static html page to remotes ec2 machines redhat
-  copy:
-    src: /home/knoldus/Downloads/pluto-2/pluto
-    dest: /var/www/html/pluto
-    owner: root
-    group: root
-    mode: '0664'
-
+# - name: copying the static html page to remotes ec2 machines
+#   copy:
+#     src: /home/knoldus/Downloads/marvel/html
+#     dest: "{{ item.value }}"
+#     owner: root
+#     group: root
+#     mode: '0664'
+#   when: 'ansible_facts["os_family"]|lower=="{{ item.key }}"'
+#   loop: "{{ htmlpaths|dict2items }}"
 
 
     #loops are pending
+    # config files dono ki fix krni h
+    # redhat nginx config change krna h playbook se
