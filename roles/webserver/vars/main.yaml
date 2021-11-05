@@ -3,6 +3,6 @@ htmlpaths:
   redhat: /usr/share/nginx
 
 configfiles:
-  - { distro: debian , file: nginx-ubuntu.conf}
-  - { distro: redhat , file: nginx-redhat.conf}
+  - { distro: debian , path: /var/www/html}
+  - { distro: redhat , path: /usr/share/nginx/html}
   
